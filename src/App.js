@@ -13,7 +13,7 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <>
+    <div className = "bg-slate-950 w-screen h-screen">
       <NavBar isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -23,7 +23,7 @@ function App() {
         <Route path="/login" element={<LogIn  setIsLoggedIn = {setIsLoggedIn} />}  />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

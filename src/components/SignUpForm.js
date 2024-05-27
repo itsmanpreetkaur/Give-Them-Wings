@@ -6,6 +6,7 @@ import { IoMdEyeOff } from "react-icons/io";
 
 const SignUpForm = ({ setIsLoggedIn }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [accountType, setAccountType] = useState("Student");
   const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -28,16 +29,31 @@ const SignUpForm = ({ setIsLoggedIn }) => {
     navigate("/dashboard");
   }
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <div>
-          <button>Student</button>
-          <button>Instructor</button>
-        </div>
-        <div>
+    <form onSubmit={submitHandler}>
+      <div className="flex bg-gray-800 w-[140px] rounded-full mt-2 h-[30px] justify-around gap-1">
+        <button
+          className={`${
+            accountType === "Student"
+          } ? "bg-gray-900 text-sm" : "bg-transparent text-sm" 
+        `}
+          onClick={() => setAccountType("Student")}
+        >
+          Student
+        </button>
+        <button
+          className={`${
+            accountType === "Instructor"
+          } ? "bg-gray-900 text-sm" : "bg-transparent text-sm" `}
+          onClick={() => setAccountType("Instructor")}
+        >
+          Instructor
+        </button>
+      </div>
+      <div>
+        <div className=" text-gray-300 mt-4 text-sm flex gap-2">
           <div>
             <label htmlFor="firstName">
-              First Name <sup>*</sup>
+              First Name <sup className="text-pink-300">*</sup>
             </label>
             <input
               required
@@ -47,11 +63,12 @@ const SignUpForm = ({ setIsLoggedIn }) => {
               placeholder="Enter first name"
               onChange={changeHandler}
               value={formData.firstName}
+              className="w-full border rounded px-2 py-1 border-gray-800 bg-gray-800 mt-1"
             />
           </div>
           <div>
             <label htmlFor="lastName">
-              Last Name<sup>*</sup>
+              Last Name<sup className="text-pink-300">*</sup>
             </label>
             <input
               required
@@ -61,27 +78,32 @@ const SignUpForm = ({ setIsLoggedIn }) => {
               placeholder="Enter last name"
               onChange={changeHandler}
               value={formData.lastName}
+              className="w-full border rounded px-2 py-1 border-gray-800 bg-gray-800 mt-1"
             />
           </div>
         </div>
-        <div>
-          <label htmlFor="email">
-            Email Address<sup>*</sup>
-          </label>
-          <input
-            required
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter email address"
-            onChange={changeHandler}
-            value={formData.email}
-          />
-        </div>
-        <div>
+      </div>
+      <div className=" text-gray-300 mt-4 text-sm">
+        <label htmlFor="email">
+          Email Address<sup className="text-pink-300">*</sup>
+        </label>
+        <input
+          required
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter email address"
+          onChange={changeHandler}
+          value={formData.email}
+          className="w-full border rounded px-2 py-1 border-gray-800 bg-gray-800 mt-1"
+        />
+      </div>
+      <div>
+        <div className="text-gray-300 mt-4 text-sm relative flex gap-2">
           <div>
+            {" "}
             <label htmlFor="createPassword">
-              Create Password<sup>*</sup>
+              Create Password<sup className="text-pink-300">*</sup>
             </label>
             <input
               required
@@ -91,14 +113,18 @@ const SignUpForm = ({ setIsLoggedIn }) => {
               placeholder="Create Password"
               onChange={changeHandler}
               value={formData.createPassword}
+              className="w-full border rounded px-2 py-1 border-gray-800 bg-gray-800 mt-1"
             />
-            <span onClick={() => setShowPassword(!showPassword)}>
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute left-40 top-8 cursor-pointer"
+            >
               {showPassword ? <IoMdEyeOff /> : <IoMdEye />}
             </span>
           </div>
           <div>
             <label htmlFor="confirmPassword">
-              Confirm Password<sup>*</sup>
+              Confirm Password<sup className="text-pink-300">*</sup>
             </label>
             <input
               required
@@ -108,19 +134,21 @@ const SignUpForm = ({ setIsLoggedIn }) => {
               placeholder="Confirm Password"
               onChange={changeHandler}
               value={formData.confirmPassword}
+              className="w-full border rounded px-2 py-1 border-gray-800 bg-gray-800 mt-1"
             />
-            <span onClick={() => setShowPass(!showPass)}>
+            <span
+              onClick={() => setShowPass(!showPass)}
+              className="absolute right-2 top-8 cursor-pointer"
+            >
               {showPass ? <IoMdEyeOff /> : <IoMdEye />}
             </span>
           </div>
         </div>
-        <div>
-          <button>
-            <p>Create Account</p>
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div className="bg-yellow-400 mt-6 flex justify-center px-5 py-2 rounded-md w-[450px] border gap-1 border-gray-800">
+        <button className="text-sm font-bold ">Create account</button>
+      </div>
+    </form>
   );
 };
 

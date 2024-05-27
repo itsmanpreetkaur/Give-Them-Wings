@@ -7,7 +7,7 @@ const LogIn = ({setIsLoggedIn}) => {
       <Form
       heading = "Welcome Back"
       desc1 = "Build skills for today, tomorrow, and beyond."
-      desc2 = "Education for future-proof your carrer"
+      desc2 = "Education for future-proof your carrer."
       formType = "LogIn"
       setIsLoggedIn = {setIsLoggedIn}
       setImage={login}
