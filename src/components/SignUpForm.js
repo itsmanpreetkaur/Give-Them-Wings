@@ -8,7 +8,6 @@ const SignUpForm = ({ setIsLoggedIn }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [accountType, setAccountType] = useState("Student");
   const [showPass, setShowPass] = useState(false);
-  const [accountType, setAccountType] = useState('Student');
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
